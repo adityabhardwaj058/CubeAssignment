@@ -24,7 +24,7 @@ export const App = () => {
         );
         const images = response.data.map((photo: Photo) => ({
           ...photo,
-          download_url: `https://picsum.photos/id/${photo.id}/100/100`,
+          download_url: `https://picsum.photos/id/${photo.id}/600/600`,
         }));
         const imageUrls = images.map((photo: Photo) => photo.download_url);
         setPhotos(imageUrls);
