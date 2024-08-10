@@ -65,3 +65,8 @@
   border-radius: 12px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
+.blur {
+  transition: filter 1s ease;
+  filter: blur(10px);
+}

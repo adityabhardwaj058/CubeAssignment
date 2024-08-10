@@ -13,6 +13,7 @@ export const App = () => {
   );
 
   const [photos, setPhotos] = useState<string[]>([]);
+  const [blurred, setBlurred] = useState(false);
 
   const randomPage = () => Math.floor(Math.random() * 33) + 1;
 
@@ -34,7 +35,13 @@ export const App = () => {
     };
 
     fetchPhotos();
-    const interval = setInterval(fetchPhotos, 10000);
+    const interval = setInterval(() => {
+      setBlurred(true);
+      fetchPhotos();
+      setTimeout(() => {
+        setBlurred(false);
+      }, 1000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [selectedCustomer]);
@@ -47,7 +54,11 @@ export const App = () => {
         onSelectCustomer={setSelectedCustomer}
       />
       {selectedCustomer && (
-        <CustomerDetails customer={selectedCustomer} photos={photos} />
+        <CustomerDetails
+          customer={selectedCustomer}
+          photos={photos}
+          isBlurred={blurred}
+        />
       )}
     </div>
   );

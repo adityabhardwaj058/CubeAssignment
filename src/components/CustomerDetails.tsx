@@ -4,9 +4,14 @@ import "./CustomerDetails.css";
 interface CustomerDetailsProps {
   customer: Customer;
   photos: string[];
+  isBlurred: boolean;
 }
 
-export const CustomerDetails = ({ customer, photos }: CustomerDetailsProps) => {
+export const CustomerDetails = ({
+  customer,
+  photos,
+  isBlurred,
+}: CustomerDetailsProps) => {
   return (
     <div className="customer-details-container">
       <div className="customer-details">
@@ -17,7 +22,12 @@ export const CustomerDetails = ({ customer, photos }: CustomerDetailsProps) => {
         </div>
         <div className="photo-grid">
           {photos.map((photo, index) => (
-            <img key={index} src={photo} alt={`Photo ${index + 1}`} />
+            <img
+              className={isBlurred ? "blur" : ""}
+              key={index}
+              src={photo}
+              alt={`Photo ${index + 1}`}
+            />
           ))}
         </div>
       </div>
