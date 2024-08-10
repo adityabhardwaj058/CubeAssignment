@@ -22,9 +22,11 @@ export const App = () => {
         const response = await axios.get(
           `https://picsum.photos/v2/list?page=${randomPage()}&&limit=9`
         );
-        const imageUrls = response.data.map(
-          (photo: Photo) => photo.download_url
-        );
+        const images = response.data.map((photo: Photo) => ({
+          ...photo,
+          download_url: `https://picsum.photos/id/${photo.id}/100/100`,
+        }));
+        const imageUrls = images.map((photo: Photo) => photo.download_url);
         setPhotos(imageUrls);
       } catch (error) {
         console.error("Error fetching photos:", error);
