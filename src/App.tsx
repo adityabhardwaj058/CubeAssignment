@@ -3,8 +3,7 @@ import { CustomerList } from "./components/CustomerList";
 import { CustomerDetails } from "./components/CustomerDetails";
 import { Customer } from "./types/customer";
 import { randomCustomers } from "./assets/sampleData";
-import { Photo } from "./types/image";
-import axios from "axios";
+import { useGetPhotos } from "./hooks/GetPhotos";
 import "./App.css";
 
 export const App = () => {
@@ -12,28 +11,11 @@ export const App = () => {
     randomCustomers[0]
   );
 
-  const [photos, setPhotos] = useState<string[]>([]);
   const [blurred, setBlurred] = useState(false);
 
-  const randomPage = () => Math.floor(Math.random() * 33) + 1;
+  const { fetchPhotos, photos } = useGetPhotos();
 
   useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        const response = await axios.get(
-          `https://picsum.photos/v2/list?page=${randomPage()}&&limit=9`
-        );
-        const images = response.data.map((photo: Photo) => ({
-          ...photo,
-          download_url: `https://picsum.photos/id/${photo.id}/400/400`,
-        }));
-        const imageUrls = images.map((photo: Photo) => photo.download_url);
-        setPhotos(imageUrls);
-      } catch (error) {
-        console.error("Error fetching photos:", error);
-      }
-    };
-
     fetchPhotos();
     const interval = setInterval(() => {
       setBlurred(true);
