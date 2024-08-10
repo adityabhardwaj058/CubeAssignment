@@ -40,7 +40,7 @@ export const App = () => {
       fetchPhotos();
       setTimeout(() => {
         setBlurred(false);
-      }, 1000);
+      }, 1500);
     }, 10000);
 
     return () => clearInterval(interval);

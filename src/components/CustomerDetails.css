@@ -68,5 +68,5 @@
 
 .blur {
   transition: filter 1s ease;
-  filter: blur(10px);
+  filter: blur(1.5px);
 }
