@@ -1,0 +1,52 @@
+.customer-list {
+  width: 40%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  text-align: left;
+  height: 100%;
+}
+
+.customer-list::-webkit-scrollbar {
+  display: none;
+}
+
+.customer-card {
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-bottom: 1px solid #e7e7e7;
+  background-color: transparent;
+}
+
+.customer-card:hover {
+  background-color: #e6e6e6;
+}
+
+.customer-card.selected {
+  background-color: #e6e6e6;
+  border-right: 1.5px solid rgb(91, 91, 91);
+}
+
+.customer-name {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 300;
+  color: black;
+}
+
+.about {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: small;
+  color: grey;
+  height: 48px;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
